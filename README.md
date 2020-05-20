@@ -33,3 +33,16 @@ json >  contractless(어트리뷰트 사용하지 않고 ContractlessStandardRes
 
 - MsgPackTest.cs에 용량별 비교하는 코드와 Typeless 테스트하는 코드가 있음.
 - 유니티메뉴에 MessagePack/Test, Test2로 진행.
+
+|MsgPack(Contract)|ZeroFormatter(Custom)|MsgPack(Dynamic+Typeless)|Json Txt|
+|-|-|-|-|
+|28|37|45|62|
+
+# 속도 비교
+
+|MsgPack(Contract)|ZeroFormatter|MsgPack(dynamic+typeless)
+|-|-|-|
+|0.000475|0.001756|0.005446
+
+- 속도나 용량 둘다 ZeroFormatter는 공식 지원하는 방식이 아니기 때문에 비교 못해 아쉬움.
+

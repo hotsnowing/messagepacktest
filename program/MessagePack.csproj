@@ -430,6 +430,12 @@
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>/Users/youngsunlee/Project/messagepacktest/program/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
+    <Reference Include="ZeroFormatter">
+      <HintPath>/Users/youngsunlee/Project/messagepacktest/program/Assets/Scripts/ZeroFormatter/ZeroFormatter.dll</HintPath>
+    </Reference>
+    <Reference Include="ZeroFormatter.Interfaces">
+      <HintPath>/Users/youngsunlee/Project/messagepacktest/program/Assets/Scripts/ZeroFormatter/ZeroFormatter.Interfaces.dll</HintPath>
+    </Reference>
     <Reference Include="mscorlib">
       <HintPath>/Applications/2018.4.17f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
     </Reference>

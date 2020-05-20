@@ -58,6 +58,24 @@ public class InnerData4 : ContractDataBase
         public string inner1;
 }
 
+public class InnerDataByZeroFormatter : ZeroFormattableBase<string,string>
+{
+        public string baseValue
+        {
+                get => item0;
+                set => item0 = value;
+        }
+
+        public string inner1
+        {
+                get => item1;
+                set => item1 = value;
+        }
+        public class Formatter : Formatter<InnerDataByZeroFormatter,string,string>
+        {
+        }
+}
+
 public class MsgPackTest
 {
 #if UNITY_EDITOR
@@ -112,10 +130,15 @@ public class MsgPackTest
                 InnerData4 data4 = new InnerData4();
                 data4.baseValue = "this is base";
                 data4.inner1 = "blahblah blah";
+                
+                InnerDataByZeroFormatter data5 = new InnerDataByZeroFormatter();
+                data5.baseValue = "this is base";
+                data5.inner1 = "blahblah blah";
 
                 string byteFilePath = System.IO.Path.Combine(Application.dataPath, "MsgPackTest/testByte.bytes");
                 string textFilePath = System.IO.Path.Combine(Application.dataPath, "MsgPackTest/testByte.txt");
                 string contractByteFilePath = System.IO.Path.Combine(Application.dataPath, "MsgPackTest/contractTestByte.bytes");
+                string zeroFormatterFilePath = System.IO.Path.Combine(Application.dataPath, "MsgPackTest/testByteByZeroFormatter.bytes");
 
                 var bytes = MessagePackSerializer.Serialize(data1);
                 if (System.IO.File.Exists(byteFilePath) == false)
@@ -126,6 +149,12 @@ public class MsgPackTest
                 }
                 System.IO.File.WriteAllBytes(byteFilePath, bytes);
 
+                double totalSeconds = 0;
+                var dateTime = System.DateTime.Now;
+                MessagePackSerializer.Deserialize<InnerData1>(bytes);
+                totalSeconds = (System.DateTime.Now - dateTime).TotalSeconds;
+                Debug.Log("msgpack(dynamic+typeless):"+totalSeconds);
+
                 var contractBytes = MessagePackSerializer.Serialize(data4);
                 if (System.IO.File.Exists(contractByteFilePath) == false)
                 {
@@ -135,6 +164,25 @@ public class MsgPackTest
                 }
                 System.IO.File.WriteAllBytes(contractByteFilePath, contractBytes);
 
+                dateTime = System.DateTime.Now;
+                MessagePackSerializer.Deserialize<InnerData4>(contractBytes);
+                totalSeconds = (System.DateTime.Now - dateTime).TotalSeconds;
+                Debug.Log("msgpack(contract):"+totalSeconds);
+                
+                var bytesByZeroFormatter = ZeroFormat.Serialize(data5);
+                if (System.IO.File.Exists(zeroFormatterFilePath) == false)
+                {
+                        using (System.IO.File.Create(zeroFormatterFilePath))
+                        {
+                        }
+                }
+                System.IO.File.WriteAllBytes(zeroFormatterFilePath, bytesByZeroFormatter);
+
+                dateTime = System.DateTime.Now;
+                ZeroFormat.Deserialize<InnerDataByZeroFormatter>(bytesByZeroFormatter);
+                totalSeconds = (System.DateTime.Now - dateTime).TotalSeconds;
+                Debug.Log("zeroformatter:"+totalSeconds);
+                
                 var json = MessagePackSerializer.SerializeToJson(bytes);
                 if (System.IO.File.Exists(textFilePath) == false)
                 {
@@ -143,8 +191,8 @@ public class MsgPackTest
                         }
                 }
                 System.IO.File.WriteAllText(textFilePath, json);
-
-
+                
+                UnityEditor.AssetDatabase.Refresh();
         }
 #endif
 }

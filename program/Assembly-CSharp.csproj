@@ -68,6 +68,11 @@
   <ItemGroup>
     <Compile Include="Assets\MsgPackTest\Generated.cs" />
     <Compile Include="Assets\MsgPackTest\MsgPackTest.cs" />
+    <Compile Include="Assets\Scripts\ZeroFormatter\Custom\DictionaryFormatter.cs" />
+    <Compile Include="Assets\Scripts\ZeroFormatter\Custom\ListFormatter.cs" />
+    <Compile Include="Assets\Scripts\ZeroFormatter\Custom\ZeroFormat.cs" />
+    <Compile Include="Assets\Scripts\ZeroFormatter\Custom\ZeroFormattable.cs" />
+    <Compile Include="Assets\Scripts\ZeroFormatter\Custom\ZeroFormatterContext.cs" />
     <None Include="Assets\MsgPackTest\testByte.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>/Users/youngsunlee/Project/messagepacktest/program/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -308,6 +313,12 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>/Users/youngsunlee/Project/messagepacktest/program/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="ZeroFormatter">
+      <HintPath>/Users/youngsunlee/Project/messagepacktest/program/Assets/Scripts/ZeroFormatter/ZeroFormatter.dll</HintPath>
+    </Reference>
+    <Reference Include="ZeroFormatter.Interfaces">
+      <HintPath>/Users/youngsunlee/Project/messagepacktest/program/Assets/Scripts/ZeroFormatter/ZeroFormatter.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>/Applications/2018.4.17f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
