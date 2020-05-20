@@ -1,3 +1,7 @@
+# MessagePack
+- 버전 : v2.1.115
+- 깃헙 : https://github.com/neuecc/MessagePack-CSharp/
+
 # mpc
 ```
 program/mpc -i program/Assembly-CSharp.csproj -o program/Assets/MsgPackTest/Generated.cs
