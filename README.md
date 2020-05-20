@@ -13,8 +13,10 @@ program/mpc -i program/Assembly-CSharp.csproj -o program/Assets/MsgPackTest/Gene
 API Compatibility Level : .NET 4.x
 Typeless API를 사용하기 위함. Typeless API를 사용할 필요 없다면 2.0으로 유지해도 괜찮음.
 
-# 추가 처리한 부분
+# .gitignore
+.csproj는 무시하지 않는 것이 좋을듯하다.(코드 분석을 csproj로 진행함)
 
+# 추가 처리한 부분
 - TypelessFormatter.cs
 AsymmetricKeyHashTable.cs
 를 디파인(UNITY_2018_3_OR_NEWER)을 주석처리함.
